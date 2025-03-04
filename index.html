@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album Class</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <button class="menu-btn" aria-label="Menú">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="logo">
+      <i class="fas fa-camera"></i>
+      <span>Album Class</span>
+    </div>
+    <div class="header-center">
+      <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Buscar por título o etiquetas..." aria-label="Buscar">
+        <button class="search-btn" aria-label="Buscar">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="add-btn" aria-label="Añadir">
+        <i class="fas fa-plus"></i>
+      </button>
+      <small class="section-info">crear una sección, unirse o subir foto sin clase</small>
+      <button class="profile-btn" aria-label="Perfil">
+        <i class="fas fa-user-circle"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Sidebar desplegable -->
+  <aside class="sidebar">
+    <nav>
+      <div class="nav-item" data-view="home">
+        <i class="fas fa-home"></i>
+        <span>Inicio</span>
+      </div>
+      <div class="nav-item" data-view="calendar">
+        <i class="far fa-calendar"></i>
+        <span>Calendario</span>
+      </div>
+      <div class="nav-item" data-view="classes">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Mis Clases</span>
+      </div>
+      <div class="nav-item" data-view="archived">
+        <i class="fas fa-archive"></i>
+        <span>Archivadas</span>
+      </div>
+      <div class="nav-item" data-view="settings">
+        <i class="fas fa-cog"></i>
+        <span>Configuración</span>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-content" id="mainContent">
+    <!-- Contenido dinámico se cargará aquí -->
+  </main>
+
+  <!-- Modal para opciones de sección (Crear/Unirse/Subir foto sin clase) -->
+  <div id="sectionModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="sectionModalClose" aria-label="Cerrar">&times;</span>
+      <div class="modal-body" id="sectionModalBody">
+        <h3>Selecciona una opción</h3>
+        <button id="createSectionBtn">Crear sección</button>
+        <button id="joinSectionBtn">Unirse a sección</button>
+        <button id="uploadNoClassBtn">Subir foto sin clase</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para subir foto en una sección (con clase) -->
+  <div id="photoModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="photoModalClose" aria-label="Cerrar">&times;</span>
+      <div class="modal-body" id="photoModalBody">
+        <h3>Subir Foto</h3>
+        <form id="photoUploadForm">
+          <div class="form-group">
+            <label>Descripción/Palabra clave</label>
+            <input type="text" id="photoDescription" required>
+          </div>
+          <div class="form-group">
+            <label>Selecciona la foto</label>
+            <input type="file" id="photoInput" accept="image/*" required>
+          </div>
+          <button type="submit">Subir</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para subir foto sin clase (solo en Inicio) -->
+  <div id="photoNoClassModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close" id="photoNoClassModalClose" aria-label="Cerrar">&times;</span>
+      <div class="modal-body" id="photoNoClassModalBody">
+        <h3>Subir Foto sin Clase</h3>
+        <form id="photoNoClassForm">
+          <div class="form-group">
+            <label>Asignatura</label>
+            <input type="text" id="photoNoClassSubject" required>
+          </div>
+          <div class="form-group">
+            <label>Descripción/Palabra clave</label>
+            <input type="text" id="photoNoClassDescription" required>
+          </div>
+          <div class="form-group">
+            <label>Selecciona la foto</label>
+            <input type="file" id="photoNoClassInput" accept="image/*" required>
+          </div>
+          <button type="submit">Subir</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para vista previa ampliada de foto -->
+  <div id="photoPreviewModal" class="modal hidden">
+    <div class="modal-content preview-content">
+      <span class="close" id="photoPreviewModalClose" aria-label="Cerrar">&times;</span>
+      <div class="modal-body" id="photoPreviewBody">
+        <!-- La foto ampliada se insertará aquí -->
+        <img id="previewImage" src="" alt="">
+        <p id="previewDescription"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor para dropdowns (menús contextuales) -->
+  <div id="dropdownContainer"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
